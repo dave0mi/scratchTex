@@ -1,0 +1,110 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,letterpaper,oneside]{article}
+
+% Packages
+%\usepackage{sectsty}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{pslatex}
+\usepackage{times}
+\usepackage{amssymb,amsfonts,amsmath,amscd}
+\usepackage{accents}
+%\usepackage[pdftex]{hyperref}
+\usepackage[pdftex]{graphicx}
+%\makeatletter
+%\define@key{Gin}{resolution}{\pdfimageresolution=#1\relax}
+%\makeatother
+
+%\usepackage{todonotes}
+%\usepackage{fnpos}
+%\usepackage{caption}
+%\usepackage{longtable}
+\usepackage{verbatim}
+%\usepackage{fancyhdr}
+\usepackage{theorem}
+\usepackage{float}
+
+% Some handy commands
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\Complex}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\Ker}{\textup{Ker}}
+\newcommand{\Img}{\textup{Img}}
+\newcommand{\diag}{\textup{diag}}
+\newcommand{\circulant}{\textup{circ}}
+
+\DeclareMathOperator*{\argmin}{argmin} 
+\newcommand\munderbar[1]{ \underaccent{\bar}{#1}}
+
+\newenvironment{prf}[1]
+    {\indent\textit{Proof#1:}}
+    {~\hfill $\blacksquare$\\}
+    
+% Fix some error reporting
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz2pt % Don't report over-full h-boxes if over-edge is small
+
+% Set the paragraph ski
+\setlength{\parskip}{3pt}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+\title{Curves}
+\author{Dave Ilstrup}
+\date{}
+{\sf \maketitle}
+
+\section{Some closest point solutions}
+
+Given a curve $c(t):\mathbb{R}\rightarrow\mathbb{R}^n$
+and a point $Q\in\mathbb{R}^n$, find $t^*$ s.t.
+$|c(t)-Q|$ is minimized.
+Basic approach is to solve $\frac{d}{dt}|c(t)-Q|=0$,
+which gives Eqn\ref{eq:dotmin}. In general, these could be maxima
+as well. In the examples here, we are interested in `finite' segments 
+of parameterized curves ($t\in[0,1]$). So the results have to be checked
+to avoid maxima and solutions outside $[c(0),c(1)]$.
+
+\begin{equation}
+\label{eq:dotmin}
+<c,c'>=<Q,c'>
+\end{equation}
+
+
+A few examples: A line segment (Eqn\ref{eq:lineseg})
+and a quadratic Bezier curve (Eqn\ref{eq:quadBezier}).
+\begin{equation}
+\label{eq:lineseg}
+C_i(t) = c_i + t (c_{i+1}-c_i)
+\end{equation}
+
+\begin{equation}
+\label{eq:quadBezier}
+B_{p_0,p_1,p_2}(t) = p_1 + (1-t)^2(p_1-p_0) + t^2 (p_2-p_0)
+\end{equation}
+
+
+\begin{equation}
+t^* = \argmin{t} |B_{p_0,p_1,p_2}(t)-Q|
+\end{equation}
+
+\begin{equation}
+\textrm{solve }
+\frac{d}{dt} |B_{p_0,p_1,p_2}(t)-Q|=0
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Two}
+
+$C(t)=t^2$
+
+\end{document}
+
+
